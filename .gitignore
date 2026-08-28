@@ -21,3 +21,7 @@ callgraph.svg
 *.o
 *.os
 .DS_Store
+
+# Supplied by the repo manifest, not vendored. See default.xml.
+tests/Catch2/
+tests/unit/ext/lodepng/

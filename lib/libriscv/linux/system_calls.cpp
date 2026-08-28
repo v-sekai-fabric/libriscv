@@ -1,3 +1,8 @@
+#include <type_traits>
+#if defined(__APPLE__)
+#include <Security/Security.h>
+#endif
+
 #include "../machine.hpp"
 
 #include "../internal_common.hpp"
@@ -1091,10 +1096,6 @@ static void syscall_brk(Machine<W>& machine)
 	}
 	machine.set_result(new_end);
 }
-
-#if defined(__APPLE__)
-	#include <Security/Security.h>
-#endif
 
 template <int W>
 static void syscall_getrandom(Machine<W>& machine)
