@@ -829,7 +829,7 @@ INSTRUCTION(RV32I_BC_LIVEPATCH, execute_livepatch) {
 		// Special bytecode that does not read any decoder data
 		// 1. Wind back PC to the current decoder position
 		pc = pc - DECODER().block_bytes();
-#  ifdef DISPATCH_MODE_TAILCALL
+#  if defined(DISPATCH_MODE_TAILCALL) || defined(DISPATCH_MODE_MSVC_THREADED)
 		// 2. Find the correct decoder pointer in the patched decoder cache
 		auto* patched = &exec->patched_decoder_cache()[pc / DecoderData<W>::DIVISOR];
 		d = patched;
